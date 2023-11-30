@@ -4,7 +4,10 @@ import { api } from './api'
 import compression from 'compression'
 
 export const app = express()
-app.use(session({ secret: process.env['SESSION_SECRET'] || 'dev secret' }))
+app.use(
+  '/api',
+  session({ secret: process.env['SESSION_SECRET'] || 'dev secret' })
+)
 
 app.use(api)
 
