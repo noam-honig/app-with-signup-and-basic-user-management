@@ -6,7 +6,10 @@ import compression from 'compression'
 export const app = express()
 app.use(
   '/api',
-  session({ secret: process.env['SESSION_SECRET'] || 'dev secret' })
+  session({
+    secret: process.env['SESSION_SECRET'] || 'dev secret',
+    maxAge: 365 * 24 * 60 * 60 * 1000, // to remember the user between sessions
+  })
 )
 
 app.use(api)
